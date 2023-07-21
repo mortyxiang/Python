@@ -228,7 +228,7 @@ class DiffieHellman:
 
     def is_valid_public_key(self, key: int) -> bool:
         # check if the other public key is valid based on NIST SP800-56
-        if 2 <= key and key <= self.prime - 2:
+        if 2 <= key <= self.prime - 2:
             if pow(key, (self.prime - 1) // 2, self.prime) == 1:
                 return True
         return False
@@ -243,7 +243,7 @@ class DiffieHellman:
     @staticmethod
     def is_valid_public_key_static(remote_public_key_str: int, prime: int) -> bool:
         # check if the other public key is valid based on NIST SP800-56
-        if 2 <= remote_public_key_str and remote_public_key_str <= prime - 2:
+        if 2 <= remote_public_key_str <= prime - 2:
             if pow(remote_public_key_str, (prime - 1) // 2, prime) == 1:
                 return True
         return False
