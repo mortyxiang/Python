@@ -9,14 +9,15 @@ and right to left.
 NOTE: 2, 3, 5, and 7 are not considered to be truncatable primes.
 """
 
+
 from __future__ import annotations
 
 seive = [True] * 1000001
 seive[1] = False
 i = 2
-while i * i <= 1000000:
+while i**2 <= 1000000:
     if seive[i]:
-        for j in range(i * i, 1000001, i):
+        for j in range(i**2, 1000001, i):
             seive[j] = False
     i += 1
 
@@ -48,8 +49,7 @@ def list_truncated_nums(n: int) -> list[int]:
     str_num = str(n)
     list_nums = [n]
     for i in range(1, len(str_num)):
-        list_nums.append(int(str_num[i:]))
-        list_nums.append(int(str_num[:-i]))
+        list_nums.extend((int(str_num[i:]), int(str_num[:-i])))
     return list_nums
 
 
